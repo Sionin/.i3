@@ -185,7 +185,7 @@ for_window [class="Chromium"] border none, focus
 exec --no-startup-id nm-applet
 exec --no-startup-id unity-settings-daemon
 exec --no-startup-id feh --bg-scale ~/.i3/back.jpg
-exec --no-startup-id xautolock -time 5 -locker 'i3lock -i ~/.i3/lock.png' &
+exec --no-startup-id xautolock -detectsleep -time 5 -locker '~/.i3/i3lock' &
 
 
 #User added
@@ -227,7 +227,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 #Display switch
-bindsym XF86Display exec ~/.i3/i3screen
+bindsym XF86Display exec --no-startup-id ~/.i3/i3screen
+
+#Sleep
+bindsym XF86Sleep exec --no-startup-id "~/.i3/i3exit suspend"
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
