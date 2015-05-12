@@ -1,3 +1,5 @@
 #!/bin/sh
 
-i3lock -i ~/.i3/lock.png
+#i3lock -i ~/.i3/lock.png
+gnome-screensaver-command -l
+#dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock

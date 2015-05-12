@@ -119,7 +119,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
+#bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -184,6 +184,7 @@ for_window [class="Chromium"] border none, focus
 #exec --no-startup-id guake
 exec --no-startup-id nm-applet
 exec --no-startup-id unity-settings-daemon
+exec --no-startup-id gnome-screensaver
 exec --no-startup-id feh --bg-scale ~/.i3/back.jpg
 exec --no-startup-id xautolock -detectsleep -time 5 -locker '~/.i3/i3lock' &
 
@@ -233,15 +234,15 @@ bindsym XF86Display exec --no-startup-id ~/.i3/i3screen
 bindsym XF86Sleep exec --no-startup-id "~/.i3/i3exit suspend"
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 set $sink `pactl list short sinks | grep RUNNING | cut -f1`
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink -- +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -- -10%
 
 # show battery stats
-bindsym XF86Battery exec gnome-power-statistics
+bindsym XF86Battery exec --no-startup-id gnome-power-statistics
 
