@@ -175,16 +175,32 @@ client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
 
 # WINDOW CONTROL 
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable
+
 for_window [class="Guake"] floating enable
 
 assign [class="Chromium" window_role="browser"] 2
 for_window [class="Chromium"] border none, focus
 
+assign [class="jetbrains-idea-ce"] 3
+for_window [class="jetbrains-idea-ce"] border none, focus
+
+assign [class="Sublime"] 1
+for_window [class="Sublime"] border none, focus
+
+assign [class="Skype" window_role="messanger"] 4
+assign [title="Skype™ Chat"] 4
+assign [instance="skype"] 4
+for_window [class="Skype"] focus
+
 #Autostart
+
 #exec --no-startup-id guake
-exec --no-startup-id nm-applet
 exec --no-startup-id unity-settings-daemon
 exec --no-startup-id gnome-screensaver
+exec --no-startup-id nm-applet
+exec --no-startup-id "rfkill block bluetooth && blueman-applet"
 exec --no-startup-id feh --bg-scale ~/.i3/back.jpg
 exec --no-startup-id xautolock -detectsleep -time 5 -locker '~/.i3/i3lock' &
 
