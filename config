@@ -192,7 +192,7 @@ for_window [class="Sublime"] border none, focus
 assign [class="Skype" window_role="messanger"] 4
 assign [title="Skype™ Chat"] 4
 assign [instance="skype"] 4
-for_window [class="Skype"] focus
+for_window [class="Skype"] border none, focus
 
 #Autostart
 
